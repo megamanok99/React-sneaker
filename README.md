@@ -1,4 +1,5 @@
 # Интернет-магазин React-sneaker 
+![alt text](preview.png "Описание будет тут")
 
 https://react-sneaker.herokuapp.com/
 
