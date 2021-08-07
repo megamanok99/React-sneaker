@@ -3,6 +3,7 @@ import ContentLoader from 'react-content-loader';
 import { AppContext } from '../App';
 function Card({
   id,
+  parentId,
   price,
   url,
   title,
@@ -14,13 +15,14 @@ function Card({
   loading = false,
 }) {
   const { isItemAdded } = React.useContext(AppContext);
+  const itemObj = { price, parentId: id, url, title, id };
 
   const [isAddedFavorite, setIsAddedFavorite] = React.useState(favorited);
   const onClickPlus = () => {
-    onPlus({ price, url, title, id });
+    onPlus(itemObj);
   };
   const onAddFavorite = () => {
-    onFavorite({ price, url, title, id });
+    onFavorite(itemObj);
     setIsAddedFavorite(!isAddedFavorite);
   };
 
@@ -43,13 +45,15 @@ function Card({
         </ContentLoader>
       ) : (
         <div className="card" key={index}>
-          <div className="favorite">
-            <img
-              onClick={onAddFavorite}
-              alt="like"
-              src={isAddedFavorite ? 'img/heart-liked.svg' : 'img/heart-unliked.svg'}
-            />
-          </div>
+          {onFavorite && (
+            <div className="favorite">
+              <img
+                onClick={onAddFavorite}
+                alt="like"
+                src={isAddedFavorite ? 'img/heart-liked.svg' : 'img/heart-unliked.svg'}
+              />
+            </div>
+          )}
           <img src={url} width={133} height={112} alt="botinok" />
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
@@ -58,14 +62,16 @@ function Card({
               <b>{price} руб.</b>
             </div>
 
-            <img
-              className="button"
-              onClick={onClickPlus}
-              src={isItemAdded(id) ? 'img/btn.svg' : 'img/btn-plus.svg'}
-              width={11}
-              height={11}
-              alt="plus"
-            />
+            {onPlus ? (
+              <img
+                className="button"
+                onClick={onClickPlus}
+                src={isItemAdded(id) ? 'img/btn.svg' : 'img/btn-plus.svg'}
+                width={11}
+                height={11}
+                alt="plus"
+              />
+            ) : null}
           </div>
         </div>
       )}

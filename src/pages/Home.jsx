@@ -22,12 +22,11 @@ function Home({
         key={index}
         onPlus={(obj) => addToCard(obj)}
         onFavorite={(obj) => onFavorite(obj)}
-        a
         loading={isLoading}
       />
     ));
   };
- 
+
   return (
     <div className="content p-40">
       <div className="d-flex align-center mb-40 justify-between">

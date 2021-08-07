@@ -20,30 +20,46 @@ function App() {
   const url = 'https://60ef5b67f587af00179d39e3.mockapi.io';
   React.useEffect(() => {
     async function fetchData() {
-      const cardResponse = await axios.get(`${url}/cart`);
-      const favoritesResponse = await axios.get(`${url}/favorite`);
-      const itemResponse = await axios.get(`${url}/items`);
-      setIsLoading(false);
+      try {
+        const cardResponse = await axios.get(`${url}/cart`);
+        const favoritesResponse = await axios.get(`${url}/favorite`);
+        const itemResponse = await axios.get(`${url}/items`);
+        setIsLoading(false);
 
-      setCardItems(cardResponse.data);
-      setFavorites(favoritesResponse.data);
-      setItems(itemResponse.data);
+        setCardItems(cardResponse.data);
+        setFavorites(favoritesResponse.data);
+        setItems(itemResponse.data);
+      } catch (error) {
+        alert(error);
+      }
     }
     fetchData();
   }, []);
   const onRemoveItem = (id) => {
     axios.delete(`${url}/cart/${id}`);
-    setCardItems((prev) => prev.filter((item) => item.id !== id));
+    setCardItems((prev) => prev.filter((item) => Number(item.id) !== Number(id)));
   };
-  const addToCard = (obj) => {
+  const addToCard = async (obj) => {
     console.log(obj);
     try {
-      if (cardItems.find((item) => Number(item.id) === Number(obj.id))) {
-        axios.delete(`${url}/cart/${obj.id}`);
-        setCardItems((prev) => prev.filter((el) => Number(el.id) !== Number(obj.id)));
+      const findItem = cardItems.find((item) => Number(item.parentId) === Number(obj.id));
+      if (findItem) {
+        setCardItems((prev) => prev.filter((el) => Number(el.parentId) !== Number(obj.id)));
+        await axios.delete(`${url}/cart/${findItem.id}`);
       } else {
-        axios.post(`${url}/cart`, obj);
         setCardItems((prev) => [...prev, obj]);
+        const { data } = await axios.post(`${url}/cart`, obj);
+        setCardItems((prev) =>
+          prev.map((item) => {
+            if (item.parentId === data.parentId) {
+              return {
+                ...item,
+                id: data.id,
+              };
+            }
+            return item;
+          }),
+        );
       }
     } catch (error) {
       alert(error);
@@ -70,21 +86,29 @@ function App() {
     }
   };
   const isItemAdded = (id) => {
-    return cardItems.some((obj) => Number(obj.id) === Number(id));
+    return cardItems.some((obj) => Number(obj.parentId) === Number(id));
   };
   console.log(cardItems);
 
   return (
     <AppContext.Provider
-      value={{ favorites, items, cardItems, isItemAdded, onFavorite, setCardOpened, setCardItems }}>
+      value={{
+        favorites,
+        items,
+        cardItems,
+        isItemAdded,
+        onFavorite,
+        setCardOpened,
+        setCardItems,
+        addToCard,
+      }}>
       <div className="wrapper clear">
-        {cardOpened ? (
-          <Drawer
-            items={cardItems}
-            onOpenCard={() => setCardOpened(false)}
-            onRemove={onRemoveItem}
-          />
-        ) : null}
+        <Drawer
+          items={cardItems}
+          onOpenCard={() => setCardOpened(false)}
+          onRemove={onRemoveItem}
+          opened={cardOpened}
+        />
         <Header onOpenCard={() => setCardOpened(true)} />
         <Route exact path="/">
           <Home

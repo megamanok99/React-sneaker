@@ -1,10 +1,12 @@
-import Info from './Info';
+import Info from '../Info';
 import React from 'react';
-import { AppContext } from '../App';
+import { AppContext } from '../../App';
+
 import axios from 'axios';
+import styles from './Drawer.module.scss';
 const delay = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-function Drawer({ onOpenCard, items = [], onRemove }) {
+function Drawer({ onOpenCard, items = [], onRemove, opened }) {
   const [isOrderCompleted, setIsOrderCompleted] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
   const [isLoad, setIsLoad] = React.useState(null);
@@ -32,10 +34,10 @@ function Drawer({ onOpenCard, items = [], onRemove }) {
     }
     setIsLoad(false);
   };
-  console.log(`cardItems:${cardItems} `);
+
   return (
-    <div className="overlay">
-      <div className="drawer">
+    <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
+      <div className={styles.drawer}>
         <h3 className="mb-30 d-flex justify-between ">
           корзина
           <img onClick={onOpenCard} src="img/delete.svg" className="removeBtn cu-p" alt="" />
@@ -43,7 +45,7 @@ function Drawer({ onOpenCard, items = [], onRemove }) {
         {items.length > 0 ? (
           <>
             <div className="d-flex flex-column flex">
-              <div className="items">
+              <div className="items flex">
                 {items.map((obj) => (
                   <div className="cartItem d-flex align-center mb-20" key={obj.id}>
                     <div

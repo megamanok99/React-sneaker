@@ -89,27 +89,7 @@ header {
 .wrap-style {
   flex-wrap: wrap;
 }
-.drawer {
-  /* Rectangle 23 */
-  display: flex;
-  flex-direction: column;
 
-  position: absolute;
-  width: 420px;
-  height: 100%;
-  right: 0;
-  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.01);
-  background: #ffffff;
-  padding: 30px;
-  .items {
-    flex: 1;
-    overflow: auto;
-    margin-bottom: 40px;
-  }
-  h2 {
-    margin: 0;
-  }
-}
 .cartTotalBlock {
   ul {
     display: block;
@@ -172,15 +152,7 @@ header {
     cursor: default;
   }
 }
-.overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+
 .cartItem {
   border: 1px solid #f3f3f3;
   border-radius: 20px;
