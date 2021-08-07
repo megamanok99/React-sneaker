@@ -1,6 +1,7 @@
 # Интернет-магазин React-sneaker 
-![alt text](preview.png "Описание будет тут")
-
+<p align="center">
+  <img src="https://github.com/megamanok99/React-sneaker/preview.png" alt="logo"/>
+</p>
 https://react-sneaker.herokuapp.com/
 
 ## Используемые технологии  
