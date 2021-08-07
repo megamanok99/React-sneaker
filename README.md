@@ -1,6 +1,6 @@
 # Интернет-магазин React-sneaker 
 <p align="center">
-  <img src="https://github.com/megamanok99/React-sneaker/preview.png" alt="logo"/>
+  <img src="preview.png" alt="logo"/>
 </p>
 https://react-sneaker.herokuapp.com/
 
