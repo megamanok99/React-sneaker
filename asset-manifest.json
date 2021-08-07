@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/React-sneaker/static/css/main.2e71546c.chunk.css",
+    "main.js": "/React-sneaker/static/js/main.c05f2d2e.chunk.js",
+    "main.js.map": "/React-sneaker/static/js/main.c05f2d2e.chunk.js.map",
+    "runtime-main.js": "/React-sneaker/static/js/runtime-main.14d5712d.js",
+    "runtime-main.js.map": "/React-sneaker/static/js/runtime-main.14d5712d.js.map",
+    "static/css/2.caa02cb8.chunk.css": "/React-sneaker/static/css/2.caa02cb8.chunk.css",
+    "static/js/2.e94c99e6.chunk.js": "/React-sneaker/static/js/2.e94c99e6.chunk.js",
+    "static/js/2.e94c99e6.chunk.js.map": "/React-sneaker/static/js/2.e94c99e6.chunk.js.map",
+    "index.html": "/React-sneaker/index.html",
+    "static/css/2.caa02cb8.chunk.css.map": "/React-sneaker/static/css/2.caa02cb8.chunk.css.map",
+    "static/css/main.2e71546c.chunk.css.map": "/React-sneaker/static/css/main.2e71546c.chunk.css.map",
+    "static/js/2.e94c99e6.chunk.js.LICENSE.txt": "/React-sneaker/static/js/2.e94c99e6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.14d5712d.js",
+    "static/css/2.caa02cb8.chunk.css",
+    "static/js/2.e94c99e6.chunk.js",
+    "static/css/main.2e71546c.chunk.css",
+    "static/js/main.c05f2d2e.chunk.js"
+  ]
+}
