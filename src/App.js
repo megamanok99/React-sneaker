@@ -110,7 +110,7 @@ function App() {
           opened={cardOpened}
         />
         <Header onOpenCard={() => setCardOpened(true)} />
-        <Route exact path="/">
+        <Route exact path="">
           <Home
             cardItems={cardItems}
             items={items}
@@ -122,10 +122,10 @@ function App() {
             isLoading={isLoading}
           />
         </Route>
-        <Route exact path="/favorites">
+        <Route exact path="favorites">
           <Favorites />
         </Route>
-        <Route exact path="/orders">
+        <Route exact path="orders">
           <Orders />
         </Route>
       </div>
