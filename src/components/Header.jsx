@@ -9,7 +9,7 @@ function Header({ onOpenCard }) {
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
-        <Link to="">
+        <Link to="/">
           <img width={40} height={40} src="img/logo.png" alt="" />
           <div>
             <h3 className="text-uppercase">React sneakers</h3>
@@ -50,7 +50,7 @@ function Header({ onOpenCard }) {
           </svg>
         </li>
         <li className="mr-10 cu-p">
-          <Link to="orders">
+          <Link to="/orders">
             <svg
               width="20"
               height="20"
@@ -67,7 +67,7 @@ function Header({ onOpenCard }) {
           </Link>
         </li>
         <li className="mr-10 cu-p">
-          <Link to="favorites">
+          <Link to="/favorites">
             <svg
               width="22"
               height="19"
