@@ -9,7 +9,7 @@ function Info({ title, description, image }) {
       <h2>{title}</h2>
       <p className="pacity-6">{description}</p>
       <button onClick={() => setCardOpened(false)} className="greenButton">
-        <img src="/img/left-arrow.png" alt="arrow" />
+        <img src="img/left-arrow.png" alt="arrow" />
         вернуться назад
       </button>
     </div>

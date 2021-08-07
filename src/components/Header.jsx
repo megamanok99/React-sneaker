@@ -50,7 +50,7 @@ function Header({ onOpenCard }) {
           </svg>
         </li>
         <li className="mr-10 cu-p">
-          <Link to="/orders">
+          <Link to="orders">
             <svg
               width="20"
               height="20"
@@ -67,7 +67,7 @@ function Header({ onOpenCard }) {
           </Link>
         </li>
         <li className="mr-10 cu-p">
-          <Link to="/favorites">
+          <Link to="favorites">
             <svg
               width="22"
               height="19"
